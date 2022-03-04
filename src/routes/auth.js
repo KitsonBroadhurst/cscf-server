@@ -38,7 +38,7 @@ router.post('/login', function(req, res, next) {
 })
 
 router.post('/signup', function(req, res, next) {
-  if(req?.body?.email && req?.body?.password) {
+  if(req && req.body && req.body.password && req.body.email) {
     const newUser = new User({ email: req.body.email, password: req.body.password })
     // Hash password before saving in the db
     bcrypt.genSalt(10, (err, salt) => {
